@@ -22,29 +22,47 @@
                             Crear cuenta
                         </div>
                         <div class="card-body">
-                            <form action="index.jsp">
+                            <form action="index.jsp" id="form">
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" id="name" name="name">
+                                    <input type="text" class="form-control" id="name" name="name" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="last_name" class="form-label">Apellido</label>
-                                    <input type="text" class="form-control" id="last_name" name="last_name">
+                                    <input type="text" class="form-control" id="last_name" name="last_name" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Correo</label>
-                                    <input type="email" class="form-control" id="email" name="email">
+                                    <input type="email" class="form-control" id="email" name="email" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="pass" class="form-label">Contraseña</label>
-                                    <input type="password" class="form-control" id="pass" name="pass">
+                                    <input type="password" class="form-control" id="pass" name="password" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Crear cuenta</button>
+                                <div class="mb-3">
+                                    <label for="confpass" class="form-label">Confirmar contraseña</label>
+                                    <input type="password" class="form-control" id="confpass" name="confpassword" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="btnSent" name="btnSent">Crear cuenta</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            const form = document.getElementById('form');
+
+            form.addEventListener("submit", function (event) {
+                let pass = document.getElementById('pass').value;
+                let confpass = document.getElementById('confpass').value;
+
+                if (pass !== confpass) {
+                    alert("Datos erroneos, no coinciden las contraseñas");
+                    event.preventDefault();
+                }
+            });
+
+        </script>
     </body>
 </html>

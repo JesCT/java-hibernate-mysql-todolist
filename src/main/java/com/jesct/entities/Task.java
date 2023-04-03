@@ -34,8 +34,8 @@ public class Task {
     @Column(name="created_at")
     private Timestamp create_at;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="users")
+    @ManyToOne(optional=false, fetch = FetchType.LAZY)
+    @JoinColumn(name="user_id", referencedColumnName="user_id")
     private User user;
 
     public Long getId() {

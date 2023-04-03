@@ -23,15 +23,28 @@
                         <div class="card-header">
                             Iniciar sesión
                         </div>
+                        <jsp:useBean class="com.jesct.entities.User" scope="session" id="userBean"/>
+                        <jsp:setProperty param="last_name" property="last_name" name="userBean"/>
+                        <jsp:setProperty param="name" property="name" name="userBean"/>
+                        <jsp:setProperty param="email" property="email" name="userBean"/>
+                        <jsp:setProperty param="password" property="password" name="userBean"/>
+                        <jsp:setProperty param="confpassword" property="confPassword" name="userBean"/>
+                        
+                        <jsp:useBean class="com.jesct.services.UserService" scope="session" id="userService"/>
+                        <%
+                            if(request.getParameter("btnSent") != null){
+                                userService.create(userBean);
+                            }
+                        %>
                         <div class="card-body">
-                            <form action="index.jsp">
+                            <form action="../Task/index.jsp">
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Correo</label>
-                                    <input type="email" class="form-control" id="email" name="email" value="jes@gmail.com">
+                                    <input type="email" class="form-control" id="email" name="email" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Contraseña</label>
-                                    <input type="password" class="form-control" id="password" name="password" value="123">
+                                    <input type="password" class="form-control" id="password" name="password" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary" name="enviar">Ingresar</button>
                             </form>
