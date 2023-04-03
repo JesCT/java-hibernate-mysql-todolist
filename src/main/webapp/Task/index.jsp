@@ -56,7 +56,7 @@
                             <a href="edit.jsp?id=<%= t.getId()%>&name=<%= t.getName()%>&finished=<%= t.getFinished()%>" class="btn btn-primary">
                                 <i class="fa-solid fa-pencil"></i>
                             </a>
-                            <a href="" class="btn btn-danger">
+                            <a href="delete.jsp?id=<%= t.getId()%>" class="btn btn-danger">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
                         </td>
