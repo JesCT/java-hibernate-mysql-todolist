@@ -24,12 +24,13 @@ public class TaskService {
         em.close();
     }
     
-    public List<Task> list(){
+    public List<Task> list(Long key){
         EntityManager em = Persistence.createEntityManagerFactory("ToDoListPersistence").createEntityManager();
-        String hquery = "from Task";
-        Query q = em.createQuery(hquery, Task.class);
+ 
+        User u = em.find(User.class, key);
+        List<Task> tasks = u.getTasks();
         
-        return q.getResultList();
+        return tasks;
     }
     
     public void update(Task oTask){

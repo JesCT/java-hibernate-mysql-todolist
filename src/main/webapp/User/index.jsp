@@ -46,7 +46,7 @@
                                     <label for="password" class="form-label">Contraseña</label>
                                     <input type="password" class="form-control" id="password" name="password" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary" name="enviar">Ingresar</button>
+                                <button type="submit" class="btn btn-primary">Ingresar</button>
                             </form>
                             <a href="create.jsp">¿No tiene una cuenta? Crear</a>
                         </div>

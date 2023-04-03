@@ -4,6 +4,7 @@
  */
 package com.jesct.services;
 
+import com.jesct.entities.Task;
 import com.jesct.entities.User;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
@@ -26,7 +27,7 @@ public class UserService {
         em.close();
     }
     
-    public boolean authenticate(User oUser){
+    public User authenticate(User oUser){
         EntityManager em = Persistence.createEntityManagerFactory("ToDoListPersistence").createEntityManager();
         String hquery = "FROM User u WHERE u.email=:userName and u.password=:userPass";
         
@@ -37,9 +38,22 @@ public class UserService {
         User res = null;
         try{
             res = (User)q.getSingleResult();
-            return true;
+            return res;
         }catch(Exception e){
-            return false;
+            return res;
         }
+    }
+    
+    public User find(Long n){
+        EntityManager em = Persistence.createEntityManagerFactory("ToDoListPersistence").createEntityManager();
+        em.getTransaction().begin();
+        
+        Long key = n;
+        User user = em.find(User.class, key);
+        
+        em.getTransaction().commit();
+        em.close();
+        
+        return user;
     }
 }
